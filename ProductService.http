@@ -1,6 +1,6 @@
 @ProductService_HostAddress = http://localhost:5075
 
-GET {{ProductService_HostAddress}}/Product/
+GET {{ProductService_HostAddress}}/api/Product/
 Accept: application/json
 
 ###

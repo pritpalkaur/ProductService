@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ProductService.Model;
-using ProductService.Services;
 namespace ProductService.Services
 {
     public class ProductService : IProductService
