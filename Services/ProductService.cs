@@ -1,43 +1,46 @@
-﻿using ProductService.Model;
-
+﻿using Microsoft.EntityFrameworkCore;
+using ProductService.Model;
+using ProductService.Services;
 namespace ProductService.Services
 {
     public class ProductService : IProductService
     {
-        private readonly List<Product> _products = new()
-    {
-        new Product { Id = 1, Name = "Laptop", Price = 999.99M },
-        new Product { Id = 2, Name = "Phone", Price = 499.99M }
-    };
+        private readonly ProductDbContext _context;
 
-        public IEnumerable<Product> GetAll() => _products;
+        public ProductService(ProductDbContext context)
+        {
+            _context = context;
+        }
 
-        public Product GetById(int id) => _products.FirstOrDefault(p => p.Id == id);
+        public IEnumerable<Product> GetAll() => _context.Products.ToList();
+
+        public Product GetById(int id) => _context.Products.Find(id);
 
         public void Add(Product product)
         {
-            // Auto-increment ID if not set
-            product.Id = _products.Any() ? _products.Max(p => p.Id) + 1 : 1;
-            _products.Add(product);
+            _context.Products.Add(product);
+            _context.SaveChanges();
         }
 
         public void Update(Product updatedProduct)
         {
-            var index = _products.FindIndex(p => p.Id == updatedProduct.Id);
-            if (index != -1)
+            var existing = _context.Products.Find(updatedProduct.Id);
+            if (existing != null)
             {
-                _products[index] = updatedProduct;
+                existing.Name = updatedProduct.Name;
+                existing.Price = updatedProduct.Price;
+                _context.SaveChanges();
             }
         }
 
         public void Delete(int id)
         {
-            var product = GetById(id);
+            var product = _context.Products.Find(id);
             if (product != null)
             {
-                _products.Remove(product);
+                _context.Products.Remove(product);
+                _context.SaveChanges();
             }
         }
     }
-
 }

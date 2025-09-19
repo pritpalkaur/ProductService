@@ -9,9 +9,9 @@ namespace ProductService.Controller
         [Route("api/[controller]")]
         public class ProductController : ControllerBase
         {
-            private readonly IProductService _service;
+            private readonly Services.IProductService _service;
 
-            public ProductController(IProductService service)
+            public ProductController(Services.IProductService service)
             {
                 _service = service;
             }
@@ -28,7 +28,7 @@ namespace ProductService.Controller
             }
 
             [HttpPost]
-            public IActionResult Create([FromBody] Product product)
+            public IActionResult Create([FromBody] Model.Product product)
             {
                 if (product == null)
                     return BadRequest();
@@ -38,7 +38,7 @@ namespace ProductService.Controller
             }
 
             [HttpPut("{id}")]
-            public IActionResult Update(int id, [FromBody] Product updatedProduct)
+            public IActionResult Update(int id, [FromBody] Model.Product updatedProduct)
             {
                 var existing = _service.GetById(id);
                 if (existing == null)

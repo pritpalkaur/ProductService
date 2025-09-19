@@ -1,7 +1,14 @@
-using ProductService.Services;
+using Microsoft.EntityFrameworkCore;
 
+using ProductService.Services;
+using ProductService.Model;
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddScoped<IProductService, ProductService.Services.ProductService>();
+// Add DbContext
+builder.Services.AddDbContext<ProductService.Model.ProductDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+
+builder.Services.AddScoped<ProductService.Services.IProductService, ProductService.Services.ProductService>();
 
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
