@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using ProductService.Controller;
 using MicroService.Services;
 using MicroService.Model;
+using MicroService.Controller;
 using System.Collections.Generic;
 
 public class ProductControllerTests

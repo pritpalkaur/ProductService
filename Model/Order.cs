@@ -1,5 +1,8 @@
-﻿namespace MicroService.Model
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace MicroService.Model
 {
+    [Table("Order")]
     public class Order
     {
         public int Id { get; set; }

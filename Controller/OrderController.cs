@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using MicroService.Model;
 using MicroService.Services;
 
-namespace ProductService.Controllers
+namespace MicroService.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
