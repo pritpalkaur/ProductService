@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,8 +19,13 @@ builder.Services.AddScoped<IOrderService, OrderService>();
 // Register services
 builder.Services.AddScoped<IProductService, MicroService.Services.ProductService>();
 builder.Services.AddControllers(); // ✅ Required for controller mapping
-// Load ocelot.json
+//// Load ocelot.json
 //builder.Configuration.AddJsonFile("ocelot.json", optional: false, reloadOnChange: true);
+//Log.Logger = new LoggerConfiguration()
+//    .WriteTo.File("Logs/ocelot.log")
+//    .CreateLogger();
+
+builder.Host.UseSerilog();
 
 // Register Ocelot
 //builder.Services.AddOcelot();
@@ -40,16 +46,14 @@ var app = builder.Build();
 // Configure middleware
 if (app.Environment.IsDevelopment())
 {
-   // app.UseSwagger();
-   // app.UseSwaggerUI();
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
-
-app.UseHttpsRedirection();
 app.UseAuthorization(); // Optional if you're using auth
 app.MapControllers();   // ✅ Maps your controller endpoints
-// ✅ Custom middleware
-//app.UseMiddleware<ExceptionMiddleware>();
-// Use Ocelot middleware
-//app.UseOcelot();
+
+app.UseHttpsRedirection();
+app.UseHsts();
+
 
 app.Run();
