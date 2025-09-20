@@ -2,8 +2,8 @@
 using Moq;
 using Microsoft.AspNetCore.Mvc;
 using ProductService.Controller;
-using ProductService.Services;
-using ProductService.Model;
+using MicroService.Services;
+using MicroService.Model;
 using System.Collections.Generic;
 
 public class ProductControllerTests

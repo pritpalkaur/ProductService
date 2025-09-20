@@ -1,8 +1,8 @@
-﻿using global::OrderService.Data;
-using global::ProductService.Model;
+﻿
+using MicroService.Model;
 using Microsoft.EntityFrameworkCore;
 
-namespace ProductService.Services
+namespace MicroService.Services
 {
     public class OrderService : IOrderService
     {

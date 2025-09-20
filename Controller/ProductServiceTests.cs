@@ -5,8 +5,8 @@ namespace ProductService.Controller
 {
     using Xunit;
     using Microsoft.EntityFrameworkCore;
-    using ProductService.Model;
-    using ProductService.Services;
+    using MicroService.Model;
+    using MicroService.Services;
     using System.Collections.Generic;
     using System.Linq;
 

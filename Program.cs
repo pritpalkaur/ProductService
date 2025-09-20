@@ -1,8 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-using OrderService.Data;
-using ProductService.Model;
-using ProductService.Services;
+using MicroService.Model;
+using MicroService.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,10 +11,10 @@ builder.Services.AddDbContext<ProductDbContext>(options =>
 builder.Services.AddDbContext<OrderDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("OrdersDbConnection")));
 
-builder.Services.AddScoped<IOrderService, ProductService.Services.OrderService>();
+builder.Services.AddScoped<IOrderService, OrderService>();
 
 // Register services
-builder.Services.AddScoped<IProductService, ProductService.Services.ProductService>();
+builder.Services.AddScoped<IProductService, MicroService.Services.ProductService>();
 builder.Services.AddControllers(); // ✅ Required for controller mapping
 
 // Swagger setup

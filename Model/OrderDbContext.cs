@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ProductService.Model;
+using MicroService.Model;
 
-namespace OrderService.Data
+namespace MicroService.Model
 {
     public class OrderDbContext : DbContext
     {

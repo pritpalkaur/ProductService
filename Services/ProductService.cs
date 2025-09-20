@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ProductService.Model;
-namespace ProductService.Services
+using MicroService.Model;
+
+namespace MicroService.Services
 {
     public class ProductService : IProductService
     {

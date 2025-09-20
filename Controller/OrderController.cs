@@ -1,6 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using ProductService.Model;
-using ProductService.Services;
+﻿using MicroService.Services;
+using Microsoft.AspNetCore.Mvc;
+using MicroService.Model;
+using MicroService.Services;
 
 namespace ProductService.Controllers
 {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace ProductService.Model
+namespace MicroService.Model
 {
     public class ProductDbContext : DbContext
     {

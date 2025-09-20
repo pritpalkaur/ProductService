@@ -1,4 +1,4 @@
-﻿namespace ProductService.Model
+﻿namespace MicroService.Model
 {
     public class Order
     {

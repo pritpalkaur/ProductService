@@ -1,6 +1,6 @@
-﻿using ProductService.Model;
+﻿using MicroService.Model;
 
-namespace ProductService.Services
+namespace MicroService.Services
 {
     public interface IProductService
     {
